@@ -112,7 +112,7 @@ function driveListCallback(callback){
 }
 
 function driveListWindows(callback) {
-  cp.exec("wmic logicaldisk get caption,providername,drivetype,volumename", function (error, stdout) {
+  cp.exec("wmic logicaldisk where drivetype=3 get caption,providername,drivetype,volumename type ", function (error, stdout) {
     if (error) {
       callback(error);
       return;
